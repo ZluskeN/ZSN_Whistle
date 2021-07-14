@@ -19,3 +19,6 @@ Desktop.ini
 *.bikey
 *.biprivatekey
 *.bisign
+
+# hemtt releases folder
+releases/
