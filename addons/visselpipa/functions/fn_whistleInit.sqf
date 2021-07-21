@@ -7,26 +7,40 @@
 zsn_whistleblow = 
 {
    params ["_unit"];
-
-   _sounds = ["zsn_whistleblow2","zsn_whistleblow3","zsn_whistleblow4"];
-   [_unit, [_sounds select floor random count _sounds, 1600]] remoteExec ["say3d"];
+	_items = items _unit;
+	_sounds = switch true do {
+		case ('ZSN_Whistle' in _items) : {["zsn_whistleblow2","zsn_whistleblow3","zsn_whistleblow4"]};
+		case ('ZSN_TrenchWhistle' in _items) : {["zsn_trenchblow"]};
+	};
+	[_unit, [_sounds select floor random count _sounds, 1600]] remoteExec ["say3d"];
 };
 zsn_whistleblast = 
 {
-   params ["_unit"];
-
-   _sounds = ["zsn_whistleblast2","zsn_whistleblast3","zsn_whistleblast4"];
-   [_unit, [_sounds select floor random count _sounds, 1600]] remoteExec ["say3d"];
+	params ["_unit"];
+	_items = items _unit;
+	_sounds = switch true do {
+		case ('ZSN_Whistle' in _items) : {["zsn_whistleblast2","zsn_whistleblast3","zsn_whistleblast4"]};
+		case ('ZSN_TrenchWhistle' in _items) : {["zsn_trenchblast"]};
+	};
+	[_unit, [_sounds select floor random count _sounds, 1600]] remoteExec ["say3d"];
 };
 zsn_whistledot = 
 {
-   params ["_unit"];
-
-   if ('ZSN_Whistle' in (items _unit)) then {[_unit, ["zsn_whistledot1", 1600]] remoteExec ["say3d"];};
+	params ["_unit"];
+	_items = items _unit;
+	_sound = switch true do {
+		case ('ZSN_Whistle' in _items) : {"zsn_whistledot1"};
+		case ('ZSN_TrenchWhistle' in _items) : {"zsn_trenchdot"};
+	};
+	[_unit, [_sound, 1600]] remoteExec ["say3d"];
 };
 zsn_whistledash = 
 {
-   params ["_unit"];
-
-   if ('ZSN_Whistle' in (items _unit)) then {[_unit, ["zsn_whistledash1", 1600]] remoteExec ["say3d"];};
+	params ["_unit"];
+	_items = items _unit;
+	_sound = switch true do {
+		case ('ZSN_Whistle' in _items) : {"zsn_whistledash1"};
+		case ('ZSN_TrenchWhistle' in _items) : {"zsn_trenchdash"};
+	};
+	[_unit, [_sound, 1600]] remoteExec ["say3d"];
 };
