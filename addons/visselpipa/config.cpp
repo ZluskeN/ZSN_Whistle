@@ -11,8 +11,8 @@ class CfgPatches
 {
 	class zsn_visselpipa
 	{
-		units[] = {"zsn_whistleItem","zsn_trenchwhistleItem","zsn_bugleItem"};
-		weapons[] = {"ZSN_Whistle","ZSN_TrenchWhistle","zsn_Bugle"};
+		units[] = {"zsn_whistleItem","zsn_trenchwhistleItem"};
+		weapons[] = {"ZSN_Whistle","ZSN_TrenchWhistle"};
 		requiredVersion = 1;
 		requiredAddons[] = {"ace_common"};
 	};
@@ -36,7 +36,7 @@ class CfgVehicles
 				class zsn_blowwhistle
 				{
 					displayName = "Blow Whistle";
-					condition = "'ZSN_Whistle' in (items _player) OR 'ZSN_TrenchWhistle' in (items _player)";
+					condition = "'ZSN_Whistle' in (items _player)";
 					statement = "[_player] spawn zsn_whistleblow";
 					showDisabled = 0;
 					exceptions[] = {"isNotInside","isNotSitting"};
@@ -45,51 +45,29 @@ class CfgVehicles
 				class zsn_blastwhistle
 				{
 					displayName = "Blast Whistle";
-					condition = "'ZSN_Whistle' in (items _player) OR 'ZSN_TrenchWhistle' in (items _player)";
+					condition = "'ZSN_Whistle' in (items _player)";
 					statement = "[_player] spawn zsn_whistleblast";
 					showDisabled = 0;
 					exceptions[] = {"isNotInside","isNotSitting"};
 					icon = "zsn_visselpipa\blowwhistle.paa";
 				};
-				class zsn_bugle
+				class zsn_blowtrench
 				{
-					displayName="Bugle";
-					condition="'ZSN_Bugle' in (items _player)";
-					showDisabled=0;
-					exceptions[]={"isNotInside","isNotSitting"};
-					icon = "zsn_visselpipa\blasjagarhorn.paa";
-					class zsn_uppstallning
-					{
-						displayName="Assemble";
-						condition="'ZSN_Bugle' in (items _player)";
-						statement="[_player] spawn zsn_uppstallning";
-						showDisabled=0;
-						exceptions[]={"isNotInside","isNotSitting"};
-					};
-					class zsn_framat
-					{
-						displayName="Advance";
-						condition="'ZSN_Bugle' in (items _player)";
-						statement="[_player] spawn zsn_framat";
-						showDisabled=0;
-						exceptions[]={"isNotInside","isNotSitting"};
-					};
-					class zsn_eld
-					{
-						displayName="Fire";
-						condition="'ZSN_Bugle' in (items _player)";
-						statement="[_player] spawn zsn_eld";
-						showDisabled=0;
-						exceptions[]={"isNotInside","isNotSitting"};
-					};
-					class zsn_eldupphor
-					{
-						displayName="Cease Fire";
-						condition="'ZSN_Bugle' in (items _player)";
-						statement="[_player] spawn zsn_eldupphor";
-						showDisabled=0;
-						exceptions[]={"isNotInside","isNotSitting"};
-					};
+					displayName = "Blow Trenchwhistle";
+					condition = "'ZSN_TrenchWhistle' in (items _player)";
+					statement = "[_player] spawn zsn_trenchblow";
+					showDisabled = 0;
+					exceptions[] = {"isNotInside","isNotSitting"};
+					icon = "zsn_visselpipa\blowwhistle.paa";
+				};
+				class zsn_blasttrench
+				{
+					displayName = "Blast Trenchwhistle";
+					condition = "'ZSN_TrenchWhistle' in (items _player)";
+					statement = "[_player] spawn zsn_trenchblast";
+					showDisabled = 0;
+					exceptions[] = {"isNotInside","isNotSitting"};
+					icon = "zsn_visselpipa\blowwhistle.paa";
 				};
 			};
 		};
@@ -127,22 +105,6 @@ class CfgVehicles
 			};
 		};
 	};
-	class zsn_bugleItem: Item_Base_F
-	{
-		scope = 2;
-		scopeCurator = 2;
-		displayName = "Bugle";
-		author = "ZluskeN";
-		vehicleClass = "Items";
-		class TransportItems
-		{
-			class ZSN_Bugle
-			{
-				name = "ZSN_Bugle";
-				count = 1;
-			};
-		};
-	};
 };
 class CfgWeapons
 {
@@ -167,18 +129,6 @@ class CfgWeapons
 		displayName = "Trench Whistle";
 		descriptionShort = "The classic Trench Whistle, used to command troops in combat since the days of the Roman Empire.";
 		picture = "\zsn_visselpipa\trench.paa";
-		class ItemInfo: CBA_MiscItem_ItemInfo
-		{
-			mass = 1;
-		};
-	};
-	class ZSN_Bugle: ACE_ItemCore
-	{
-		scope = 2;
-		author = "ZluskeN";
-		displayName = "Bugle";
-		descriptionShort = "Jägarhornet tog över signalgivningen från fältpipan under 1800-talet och medgav en mer utspridd stridsteknik.";
-		picture = "\zsn_visselpipa\jagarhorn.paa";
 		class ItemInfo: CBA_MiscItem_ItemInfo
 		{
 			mass = 1;
@@ -270,30 +220,6 @@ class CfgSounds
 	{
 		name = "zsn_trenchblast";
 		sound[] = {"\zsn_visselpipa\sounds\trenchblast2.ogg",1,1,1600};
-		titles[] = {};
-	};
-	class zsn_uppstallning
-	{
-		name = "zsn_uppstallning";
-		sound[] = {"\zsn_visselpipa\sounds\Uppstallning.ogg",1,1,1600};
-		titles[] = {};
-	};
-	class zsn_framat
-	{
-		name = "zsn_framat";
-		sound[] = {"\zsn_visselpipa\sounds\Framat.ogg",1,1,1600};
-		titles[] = {};
-	};
-	class zsn_eld
-	{
-		name = "zsn_eld";
-		sound[] = {"\zsn_visselpipa\sounds\Eld.ogg",1,1,1600};
-		titles[] = {};
-	};
-	class zsn_eldupphor
-	{
-		name = "zsn_eldupphor";
-		sound[] = {"\zsn_visselpipa\sounds\EldUpphor.ogg",1,1,1600};
 		titles[] = {};
 	};
 };

@@ -1,0 +1,6 @@
+///<'zsn_visselpipa.pbo' properties via Mikero's dos tools, dll version 6.44>///
+prefix=zsn_jagarhorn
+Mikero=DePbo.dll
+//Pbo Type is: Arma Addon
+//Sha: '9D1B1E176F1C9AEA0E410F56437FD0BF4F4D3E79'
+//////</properties>//////
